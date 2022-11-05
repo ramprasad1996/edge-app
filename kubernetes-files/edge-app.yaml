@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge-app
+  labels:
+    app: edge-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: edge-app
+  template:
+    metadata:
+      labels:
+        name: edge-app
+    spec:
+      containers:
+        - name: edge-app
+          image: ramprasad13160/edge-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: API_KEY
+              value: api_prod_gpXCqIfZRJc69Pee1zM2jvfMORmfd1R-YNqPdnvOKV0s=

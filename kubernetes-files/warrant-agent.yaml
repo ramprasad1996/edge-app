@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: warrant-edge
+  labels:
+    app: warrant-edge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: warrant-edge
+  template:
+    metadata:
+      labels:
+        name: warrant-edge
+    spec:
+      containers:
+        - name: agent
+          image: warrantdev/edge-agent:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: API_KEY
+              value: api_prod_gpXCqIfZRJc69Pee1zM2jvfMORmfd1R-YNqPdnvOKVs=
